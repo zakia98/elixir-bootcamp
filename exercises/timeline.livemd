@@ -121,6 +121,11 @@ defmodule Timeline do
     [9, 12, 2]
   """
   def from_dates(dates) do
+    Enum.chunk_every(dates, 2, 1, :discard)
+    |> Enum.map(fn chunk -> 
+      [first, last] = chunk
+      Date.diff(last, first)
+    end)
   end
 
   @doc """
@@ -139,6 +144,18 @@ defmodule Timeline do
     [9, 12, 2]
   """
   def from_strings(date_strings) do
+    array = Enum.chunk_every(date_strings, 2, 1, :discard)
+    |> Enum.map(fn chunk -> 
+      [first, last] = chunk
+      
+      Date.diff(string_to_date(last), string_to_date(first))
+    end)
+    
+  end
+
+  def string_to_date(date_string) do
+    {:ok, date} = Date.from_iso8601(date_string)
+    date
   end
 end
 ```

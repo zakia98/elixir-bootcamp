@@ -67,7 +67,7 @@ total = 42
 Enter your solution below.
 
 ```elixir
-
+(12/42) *100
 ```
 
 ## Rocket Ship

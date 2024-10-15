@@ -182,7 +182,10 @@ end
 Enter your solution below.
 
 ```elixir
-
+defmodule Coordinates do
+  @enforce_keys [:x, :y] 
+  defstruct @enforce_keys
+end
 ```
 
 ## Module Functions
@@ -259,7 +262,24 @@ end
 Enter your solution below.
 
 ```elixir
+defmodule Hero do
+  @enforce_keys [:name, :secret_identity]
+  defstruct [:name, :secret_identity]
 
+  def greeting(hero) do
+    "Hello, #{hero.name}"
+  end
+
+  def reveal(hero) do 
+    "Secretly is #{hero.secret_identity}"
+  end
+end
+
+hero = %{name: "Spiderman", secret_identity: "Peter Parker"}
+
+Hero.greeting(hero) 
+
+Hero.reveal(hero)
 ```
 
 When finished, bind a variable `hero` to an instance of your `Hero` struct.

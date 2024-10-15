@@ -160,7 +160,9 @@ jewel
 </details>
 
 ```elixir
-{"gold", "treasure", "jewel"}
+{_, _, jewel} = {"gold", "treasure", "jewel"}
+
+jewel
 ```
 
 ## Further Reading

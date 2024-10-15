@@ -32,7 +32,7 @@ Mix.install([
 
 ## Rock Paper Scissors Lizard Spock
 
-<!-- livebook:{"attrs":{"source":"YouTube.new(\"https://www.youtube.com/watch?v=_PUEoDYpUyQ\")","title":"Rock Paper Scissors Lizard Spock. A Brief Introduction."},"chunks":null,"kind":"Elixir.HiddenCell","livebook_object":"smart_cell"} -->
+<!-- livebook:{"attrs":"eyJzb3VyY2UiOiJZb3VUdWJlLm5ldyhcImh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9X1BVRW9EWXBVeVFcIikiLCJ0aXRsZSI6IlJvY2sgUGFwZXIgU2Npc3NvcnMgTGl6YXJkIFNwb2NrLiBBIEJyaWVmIEludHJvZHVjdGlvbi4ifQ","chunks":null,"kind":"Elixir.HiddenCell","livebook_object":"smart_cell"} -->
 
 ```elixir
 YouTube.new("https://www.youtube.com/watch?v=_PUEoDYpUyQ")
@@ -113,33 +113,31 @@ Implement the `RockPaperScissorsLizardSpock` module below.
 
 ```elixir
 defmodule RockPaperScissorsLizardSpock do
-  @doc """
-  ## Examples
-
-      iex> RockPaperScissorsLizardSpock.beats?(:lizard, :spock)
-      true
-      iex> RockPaperScissorsLizardSpock.beats?(:lizard, :paper)
-      true
-      iex> RockPaperScissorsLizardSpock.beats?(:spock, :scissors)
-      true
-      iex> RockPaperScissorsLizardSpock.beats?(:spock, :rock)
-      true
-      iex> RockPaperScissorsLizardSpock.beats?(:spock, :paper)
-      false
-  """
   def beats?(guess1, guess2) do
+    {guess1, guess2} in [
+      {:rock, :scissors},
+      {:scissors, :paper},
+      {:paper, :rock},
+      {:rock, :lizard},
+      {:lizard, :spock},
+      {:spock, :scissors},
+      {:scissors, :lizard},
+      {:lizard, :paper},
+      {:paper, :spock},
+      {:spock, :rock},
+    ]
   end
 
-  @doc """
-  ## Examples
-      
-      iex> "Player 1 Wins!" = RockPaperScissorsLizardSpock.play(:rock, :lizard)
-      iex> "Player 2 Wins!" = RockPaperScissorsLizardSpock.play(:lizard, :rock)
-      iex> "Draw!" = RockPaperScissorsLizardSpock.play(:lizard, :lizard)
-  """
   def play(player1, player2) do
+    cond do
+      player1 === player2 -> "Draw!"
+      beats?(player1, player2) -> "Player 1 Wins!"
+      true -> "Player 2 Wins!"
+    end
   end
 end
+
+RockPaperScissorsLizardSpock.play(:lizard, :lizard)
 ```
 
 ## Commit Your Progress

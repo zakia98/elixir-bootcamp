@@ -133,7 +133,11 @@ end
 Enter your solution below.
 
 ```elixir
+temperature = 11
 
+is_temp_hot = fn temp -> temp > 10 && :hot || :cold end
+
+is_temp_hot.(temperature)
 ```
 
 ## Clear Control Flow
@@ -278,7 +282,7 @@ We can provide any number of cases. Cases use pattern matching to decide which r
 Return each value from `1` to `5` by changing the `condition` variable below.
 
 ```elixir
-condition = nil
+condition = "blue"
 
 case condition do
   :red -> 1
@@ -333,7 +337,7 @@ So now, by matching on `:exactly` using a variable, we can trigger the first cas
 
 ```elixir
 case {:exactly, :equal} do
-  {_mostly, :equal} -> "matching case"
+  {:mostly, :equal} -> "matching case"
   {:exactly, :equal} -> "exactly equal case"
 end
 ```
@@ -517,7 +521,15 @@ end
 </details>
 
 ```elixir
+grade = 56
 
+cond do 
+  grade >= 85 -> "A"
+  grade < 85 && grade >= 70 -> "B"
+  grade < 70 && grade >= 55 -> "C"
+  grade < 55 && grade >= 1 -> "D"
+  true -> "HOWWWW?????"
+end
 ```
 
 ## Unless
@@ -571,7 +583,13 @@ In the Elixir cell below
 * Create an `unless` statement. which returns `"awake"` unless `tired`.
 
 ```elixir
+tired = false
 
+unless tired do
+  "dance"
+else
+  "sleep"
+end
 ```
 
 ## Commit Your Progress

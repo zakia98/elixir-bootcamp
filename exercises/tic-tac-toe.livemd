@@ -162,6 +162,9 @@ defmodule TicTacToe do
       "A"
   """
   def at(board, coordinate) do
+    {x, y} = coordinate
+
+    Enum.at(board, x) |> Enum.at(2 - y)
   end
 
   @doc """
